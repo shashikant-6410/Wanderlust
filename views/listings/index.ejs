@@ -1,0 +1,29 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <h1>All Listings</h1>
+    <!-- <form action="/listings/new" method="get">
+        <button>new listing</button>
+    </form> -->
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+    <%for(let listing of allListings){%>
+        <a href="/listings/<%=listing._id%>" class="listing-link">
+            <div class="card col" >
+                    <img src="<%=listing.image%> || https://www.pexels.com/photo/tranquil-boat-scene-on-a-foggy-winter-lake-31720940/" 
+                         class="card-img-top" 
+                         alt="listing_image" 
+                         style="height: 18rem"/>
+                    <div class="card-img-overlay"></div>     
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%=listing.title%></b>
+                            <br>
+                            &#x20b9; <%=listing.price.toLocaleString("en-IN")%>/night
+                        </p>
+                    </div>
+            </div>
+        </a>
+       
+    <%}%>
+</div>
+</body>

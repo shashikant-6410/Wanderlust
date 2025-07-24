@@ -1,0 +1,18 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <h2>Listing</h2>
+    <br>
+    <h3><%=listing.title%></h3>
+    <p><%=listing.description%></p>
+    <p>Price:  &#x20b9;<%=listing.price.toLocaleString("en-IN")%></p>  <!--Indian Rupee symbol and formatting the price according to Indian locale-->
+    <p>Location: <%=listing.location%></p>
+    <p>Country: <%=listing.country%></p>
+    <br>
+    <a href="/listings/<%=listing._id%>/edit" >edit listing</a>
+    <br>
+    <form action="/listings/<%=listing._id%>?_method=DELETE" method="post">
+        <button type="submit">Delete</button>
+    </form>
+    <!-- <a href="/listings">Back to Listings</a> -->
+</body>
+</html>
