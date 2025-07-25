@@ -1,19 +1,45 @@
 <%layout("/layouts/boilerplate")%>
 <body>
+    <div class="row">
+       <div class="col-8 "> 
     <h3>create new listing</h3>
     <br>
     <form action="/listings" method="post">
-        <!-- listing here is like an js object with keys as title,description ,etc it will be saved as an js object in req.body -->
-        <input type="text" name="listing[title]" placeholder="Title" required>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="listing[title]" placeholder="Title" id="title" class="form-control " required> 
+        </div>
+       
+        <div class="mb-3">
+            <label for="image" class="form-label">Image URL</label>
+            <input type="text" name="listing[image]" placeholder="Image URL" id="image" class="form-control" required>
+        </div>
+       
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" placeholder="Description" id="description" class="form-control" required></textarea>
+        </div>
+       
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" name="listing[price]" placeholder="Price" id="price" class="form-control" required>
+            </div>
+       
+            <div class="mb-3 col-md-8">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="listing[location]" placeholder="Location" id="location" class="form-control" required>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" name="listing[country]" placeholder="Country" id="country" class="form-control" required>
+        </div>
+       
         <br><br>
-        <textarea name="listing[description]" placeholder="Description" required></textarea>
-        <br><br>
-        <input type="number" name="listing[price]" placeholder="Price" required>
-        <br><br>
-        <input type="text" name="listing[location]" placeholder="Location" required>
-        <br><br>
-        <input type="text" name="listing[country]" placeholder="Country" required>
-        <br><br>
-        <button type="submit">Create Listing</button>
+        <button type="submit" class="btn btn-dark">Add</button>
     </form>
 </body>
+  </div>
+</div>

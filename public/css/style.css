@@ -5,8 +5,14 @@
 
 body{
      font-family: "Plus Jakarta Sans", sans-serif !important;
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
 }
 
+.containe{
+    flex: 1;
+}
 .navbar{  
     min-height: 80px;      /* Use min-height instead of height */
     padding-top: 16px;     /* Add padding for more space */
@@ -92,4 +98,10 @@ body{
     background-color: white;
 }
 
+.btn{
+    margin-bottom: 2rem !important;
+}
 
+label{
+    font-weight: 600 !important;
+}
