@@ -3,10 +3,11 @@ const  Schema= mongoose.Schema;
 
 const listingSchema = new Schema({
     title:{
-        type:String
+        type:String,
+        required:true        
     },
     description:{
-        type:String
+        type:String       
     },
     image:{
         type:String,
@@ -18,13 +19,14 @@ const listingSchema = new Schema({
                 : v,
      },
     price:{
-        type:Number
+        type:Number      
     },
     location:{
        type: String
+       
     },
     country:{
-        type:String
+        type:String     
     }
 })
 

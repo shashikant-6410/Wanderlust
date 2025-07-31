@@ -10,7 +10,7 @@ body{
      min-height: 100vh;
 }
 
-.containe{
+.container{
     flex: 1;
 }
 .navbar{  
