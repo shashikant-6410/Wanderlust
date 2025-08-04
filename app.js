@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync=require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const {ListingSchema}= require("./schema.js");
+const {ListingSchema ,reviewSchema}= require("./schema.js");
 const Review = require("./models/review.js");
 
 const port = 8080;
@@ -63,7 +63,7 @@ app.get("/listings/new",(req,res)=>{
 //show route
 app.get("/listings/:id", wrapAsync(async(req,res,next)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id);
+    const listing = await Listing.findById(id).populate("reviews");
     res.render("listings/show.ejs",{listing});
 }))
 
@@ -100,17 +100,26 @@ app.delete("/listings/:id",wrapAsync(async(req,res,next)=>{
   res.redirect("/listings");
 }))
 
+//validation middleware for Review
+const validateReview = (req,res,next)=>{
+let result= reviewSchema.validate(req.body); //Joi validation for Review 
+ if(result.error){
+  throw new ExpressError(result.error,400);
+ }else{
+  next();
+ }
+}
+
 //review 
 //Post route
-app.post("/listings/:id/review",async(req,res)=>{
+app.post("/listings/:id/review",validateReview,wrapAsync(async(req,res)=>{
   let listing= await Listing.findById(req.params.id);
   let newReview = new Review(req.body.review);
   listing.reviews.push(newReview);
   await newReview.save();
   await listing.save();
-  console.log("review added");
-  res.send("review added successfully you fool");
-})
+  res.redirect(`/listings/${listing._id}`);
+}))
 
 // app.get("/testlistings",async (req,res)=>{
 //     let sampleListings = new Listing({
@@ -136,8 +145,8 @@ app.get("/errorTesting",(req,res,next)=>{
 //Error handling middleware
 app.use((err,req,res,next)=>{
   let {message}=err;
-  console.log(err.message);
-  console.log(err.stackTrace);
+  // console.log(err.message);
+  // console.log(err.stackTrace);
   res.render("listings/error.ejs",{message});
   // res.status(err.status || 500).send(err.message || "Something went wrong");
 })

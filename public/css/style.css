@@ -67,7 +67,7 @@ body{
     justify-content: center !important;
     align-items: center !important;
 }
-.card{
+.listing-card{
     border:none !important;
     margin-bottom: 2rem !important;
     
@@ -112,7 +112,7 @@ label{
 .show-img{
     height: 30vh;
 }
-.card{
+.listing-card{
     margin-bottom: 2rem !important;
     border: none !important;
 }
@@ -144,6 +144,8 @@ label{
 .delete-btn{
     border:none !important;
 }
+
+/* review-card */
 
 
 
