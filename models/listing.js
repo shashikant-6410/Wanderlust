@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const wrapAsync = require("../utils/wrapAsync");
+const Review = require("./review");
 const  Schema= mongoose.Schema;
 
 const listingSchema = new Schema({
@@ -33,6 +35,13 @@ const listingSchema = new Schema({
         ref:"Review"
     }]
 })
+
+//express post  middleware for deleting the reviews if the listing associated with it is deleted
+listingSchema.post("findByIdAndDelete",wrapAsync(async(listing)=>{
+    if(listing){
+        await Review.DeleteMany({_id:{$in:listing.reviews}});
+    }
+}))
 
 const Listing = new mongoose.model("Listing",listingSchema);
 

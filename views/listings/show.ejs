@@ -2,7 +2,7 @@
 <body>
     <div class="row">
         <div class="col-5">
-            <h2>Listing</h2>
+            <h2><%=listing.title%></h2>
             <div class="card listing-card">
                 <img src="<%=listing.image%>" class="card-img-top show-img" alt="listing_image">
                 <div class="card-body">
@@ -32,12 +32,12 @@
     <div class="row">
         <div class="col-5">
         <h4>Leave a Review</h4>
-        <form action="/listings/<%=listing._id%>/review" method="post" class="needs-validation" novalidate>
+        <form action="/listings/<%=listing._id%>/reviews" method="post" class="needs-validation" novalidate>
             <label for="rating" class="form-label">Rating</label>
             <input type="range" name="review[rating]" id="rating" min="1" max="5" class="form-range">
             <div class="mb-3 mt-3">
                 <label for="comment" class="form-label">Comment</label>
-                <textarea name="review[comment]" id="comment"  placeholder=" comment..." class="form-control"  rows="6" required></textarea>
+                <textarea name="review[comment]" id="comment"  placeholder=" comment..." class="form-control"  rows="6" required ></textarea>
                  <div class="invalid-feedback">
                     please write a comment...
                 </div>
@@ -47,17 +47,22 @@
         </form>
     </div>
     <hr>
-    <div  class="col-5"><h4>All reviews</h4></div>
+    <div  class="text-center fw-semibold display-5 mb-4 text-dark "><h4>All reviews</h4></div>
     </div>
     <div class="row  row-cols-md-1 row-cols-lg-1 row-cols-sm-1 mt-3 mb-3  ">
          <%for(let review of listing.reviews) {%>
         <div class="card review-card mb-3"   >
             
-            <div class="card-body">
+            <div class="card-body mt-2">
                 <h5 class="card-title">Chris Evans</h5>
                 <p class="card-text"><%=review.comment%></p>
                 <p class="card-text"><%=review.rating%>&#11088;</p>
-
+                <div class="delete-review-btn">
+                    <form action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" method=post>
+                        <button class="btn btn-dark">Delete</button>    
+                    </form>
+                    
+                </div>
             </div>
              
         </div>
