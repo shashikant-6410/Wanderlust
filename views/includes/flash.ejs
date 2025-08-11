@@ -1,0 +1,20 @@
+<!-- success is an array -->
+<%if(success && success.length){%>  
+   <div class="row">
+     <div class="alert alert-success mt-3 alert-dismissible fade show col-5" role="alert">
+        <%=success%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+     </div>
+   </div>
+<%}%>
+
+<%if(error && error.length){%>  
+   <div class="row">
+     <div class="alert alert-danger mt-3 alert-dismissible fade show col-5" role="alert">
+        <%=error%>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+     </div>
+   </div>
+<%}%>

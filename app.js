@@ -12,7 +12,8 @@ const Review = require("./models/review.js");
 const listings = require("./router/listing.js");
 const reviews = require("./router/review.js")
 const session = require("express-session");
-const { createSecretKey } = require("crypto");
+const flash = require("connect-flash");
+
 
 const port = 8080;
 //
@@ -26,7 +27,7 @@ async function main() {
 }
 
 const sessionOptions={
-  secret:"mysecretId",
+  secret:"createSecretKeyAndThisIsRandom",
   resave: false,
   saveUninitialized:true,
   cookie:{
@@ -37,10 +38,19 @@ const sessionOptions={
 }
 
 app.use(session(sessionOptions));
+app.use(flash());
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method")); // for PUT and DELETE requests
+
+//flash message middleware
+app.use((req,res,next)=>{
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+})
 
 //express router for listings
 app.use("/listings", listings);
