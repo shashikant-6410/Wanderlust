@@ -1,22 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const {ListingSchema}= require("../schema.js");
 const wrapAsync=require("../utils/wrapAsync.js");
 const Listing = require("../models/listing");
 const ExpressError = require("../utils/ExpressError.js");
-const {isLoggedIn,isOwner}  = require("../middleware.js");
+const {isLoggedIn,isOwner,validateListing}  = require("../middleware.js");
 
 
-//validation middleware for listingSchema
-const validateListing = (req,res,next)=>{
-let result= ListingSchema.validate(req.body); //Joi validation for listing 
- if(result.error){
-  throw new ExpressError(result.error,400);
- }else{
-  next();
- }
-}
+
 
 //index route(listings)
 router.get("/",wrapAsync(async(req,res,next)=>{
@@ -33,7 +24,14 @@ router.get("/new",isLoggedIn,(req,res)=>{
 //show route
 router.get("/:id", wrapAsync(async(req,res,next)=>{
     let {id} = req.params;
-    const listing = await Listing.findById(id).populate("reviews").populate("owner");
+    const listing = await Listing.findById(id)
+    .populate({
+      path:"reviews",
+      populate:{
+        path:"author"
+      }
+    })
+    .populate("owner");
     if(!listing){
       req.flash("error","Listing You Searched For Doesn't exist!");
       res.redirect("/listings");

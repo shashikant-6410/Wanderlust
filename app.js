@@ -38,6 +38,7 @@ const sessionOptions={
 app.use(session(sessionOptions));
 app.use(flash());
 
+//passport
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
