@@ -4,12 +4,11 @@ const User = require("../models/user");
 const wrapAsync=require("../utils/wrapAsync.js");
 const passport = require("passport");
 
-router.get("/signup",(req,res)=>{
+router.route("/signup")
+.get((req,res)=>{
     res.render("user/signup.ejs");
 })
-
-//signup post route
-router.post("/signup",wrapAsync(async(req,res)=>{
+.post(wrapAsync(async(req,res)=>{
     try{
     let {username , email,password}=req.body;
     let newUser = new User({username,email});
@@ -26,16 +25,14 @@ router.post("/signup",wrapAsync(async(req,res)=>{
         req.flash("error",e.message);
         res.redirect("/signup");
     }
-    
 }))
 
-router.get("/login",(req,res)=>{
+router.route("/login")
+.get((req,res)=>{
     res.render("user/login.ejs");
 })
-
-//login-authenticate route
 //passport.authenticate is a middleware to authenticate the username and password 
-router.post("/login",passport.authenticate("local" ,{failureRedirect:'/login' , failureFlash:true}),async(req,res)=>{
+.post(passport.authenticate("local" ,{failureRedirect:'/login' , failureFlash:true}),async(req,res)=>{
     try {
         req.flash("success","WelcomeBack to Wanderlust");
         res.redirect("/listings");
@@ -45,7 +42,6 @@ router.post("/login",passport.authenticate("local" ,{failureRedirect:'/login' , 
     }
 })
 
-//logout router
 //req.logout is builtin function of passport to logout the user(delete the session data)
 router.get("/logout",(req,res,next)=>{
     req.logout((err)=>{
