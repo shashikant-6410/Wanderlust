@@ -18,7 +18,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const user = require("./router/user.js")
 
-const port = 8080;
+const PORT = process.env.PORT || 8080;
 
 const dbUrl=process.env.ATLAS_URL;
 
@@ -131,7 +131,7 @@ app.use((err,req,res,next)=>{
 })
 
 app.listen(port,()=>{
-    console.log("server is running on port ",port);
+    console.log("server is running on port ",PORT);
 });
 
 
