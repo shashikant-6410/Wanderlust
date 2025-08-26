@@ -46,7 +46,7 @@ module.exports.showListing = async(req,res,next)=>{
       };
     }
   }catch (err) {
-    next(err);
+    return next(err);
   }
     
    res.render("listings/show.ejs",{listing,coords});
