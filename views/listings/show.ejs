@@ -99,7 +99,9 @@
                     
                     <div class="delete-review-btn">
                         <form action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" method=post>
-                            <button class="btn btn-dark">Delete</button>    
+                           <%if(currentUser && listing.owner._id.equals(currentUser._id)){%>
+                              <button class="btn btn-dark">Delete</button>    
+                            <%}%>
                         </form>
                         
                     </div>

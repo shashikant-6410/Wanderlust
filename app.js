@@ -130,7 +130,7 @@ app.use((err,req,res,next)=>{
   // res.status(err.status || 500).send(err.message || "Something went wrong");
 })
 
-app.listen(port,()=>{
+app.listen(PORT,()=>{
     console.log("server is running on port ",PORT);
 });
 
