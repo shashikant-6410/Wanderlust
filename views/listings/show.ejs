@@ -4,7 +4,7 @@
         <div class="col-5">
             <h2><%=listing.title%></h2>
             <div class="card listing-card">
-                <img src="<%=listing.image%>" class="card-img-top show-img" alt="listing_image">
+                <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
                 <div class="card-body">
                     <p class="card-text mt-3">
                         <p>OWNED BY-<i><%=listing.owner.username%></i></p>
@@ -32,7 +32,16 @@
     </div>
     <%}%>
     <hr>
-   
+    
+    <!-- Map Container -->
+    <div div class="row">
+        <div class="col-5" >
+            <h3> Where you'll be</h3>
+            <div  id="map" data-lat="<%=coords ? coords.lat : '' %>" data-lng="<%=coords ? coords.lng : '' %>" style="height:400px; width:80vh; margin-top:20px;">
+            </div>
+         </div>
+    </div>
+    <br>
     <div class="row">
         <div class="col-5">
             <%if(currentUser){%>   

@@ -19,6 +19,7 @@ body{
     padding-bottom: 16px;
     box-sizing: border-box;
     background-color: whitesmoke;
+    
 }
 
 .fa-compass{
@@ -29,6 +30,12 @@ body{
 .nav-link{
     font-weight: 600 !important;
     color: rgb(31, 30, 30) !important;
+    transition:color 0.4s ease; 
+}
+
+.nav-link:hover{
+    color: rgb(248, 16, 16) !important;
+    text-decoration-line: underline !important;
 }
 
 /* footer */
@@ -147,7 +154,15 @@ label{
 
 /* review*/
 
-
+/* map */
+/* @media (max-width:600px){
+    #map{
+        
+       height: 300px !important;
+       width: 80vw !important;
+       margin-right: 10vw !important;
+    }
+} */
 
 
 

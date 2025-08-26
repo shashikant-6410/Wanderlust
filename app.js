@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production"){
+      require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const path=require("path");
@@ -7,6 +11,7 @@ const ejsMate = require("ejs-mate");
 const listings = require("./router/listing.js");
 const reviews = require("./router/review.js")
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -14,6 +19,9 @@ const User = require("./models/user.js");
 const user = require("./router/user.js")
 
 const port = 8080;
+
+const dbUrl=process.env.ATLAS_URL;
+
 //
 main().then(()=>{
     console.log("Connected to DB successfully");
@@ -21,11 +29,24 @@ main().then(()=>{
 .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+  await mongoose.connect(dbUrl);
 }
 
+const store=MongoStore.create({
+  mongoUrl:dbUrl,
+  touchAfter: 24 * 3600 , // time period in seconds
+  crypto:{
+    secret:process.env.SECRET
+  }
+});
+
+store.on("error",(err)=>{
+  console.log("error in MONGO SESSION STORE",err);
+});
+
 const sessionOptions={
-  secret:"createSecretKeyAndThisIsRandom",
+  store,
+  secret:process.env.SECRET,
   resave: false,
   saveUninitialized:true,
   cookie:{
@@ -88,9 +109,9 @@ app.engine("ejs", ejsMate); // using ejsMate for layout support
 
 // })
 
-app.get("/",(req,res)=>{
-    res.send("root is working");
-});
+// app.get("/",(req,res)=>{
+//     res.send("root is working");
+// });
 
 //page not found route (404)
 // app.all("*",(req,res,next)=>{

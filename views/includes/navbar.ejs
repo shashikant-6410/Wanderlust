@@ -1,6 +1,23 @@
+
+<style>
+  .search_button{
+    background-color:#f82b0f !important ;
+    color:aliceblue;
+    border-radius: 3rem;
+  }
+ .search_area{
+  height: 2.5rem;
+  border-radius: 3rem;
+  padding: 0% 1rem;
+ }
+ .search_area,
+ .search_button{
+   margin-top:1rem ;
+ }
+</style>
 <nav class="navbar navbar-expand-md  bg-body-light  border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa-regular fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
     <button class="navbar-toggler" 
     type="button" 
     data-bs-toggle="collapse" 
@@ -13,14 +30,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link "  href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">New listing</a>
+        <a class="nav-link" href="/listings">explore</a>
+      </div>
+      <div class="navbar-nav ms-auto search_box" >
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 search_area" type="search" placeholder="Search destination" aria-label="Search"/>
+          <button class="btn search_button" type="submit">Search</button>
+        </form>
       </div>
       <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new">Airbnb your home</a>
         <%if(!currentUser){%>
-          <a class="nav-link "  href="/signup">sign up</a>
-          <a class="nav-link" href="/login">Log in</a>
+          <a class="nav-link"  href="/signup"><b><i>sign up</i></b></a>
+          <a class="nav-link" href="/login"><b><i>Log in</i></b></a>
         <%}%>
         <% if(currentUser){%>
           <a class="nav-link" href="/logout">Log out</a>
