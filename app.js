@@ -109,9 +109,9 @@ app.engine("ejs", ejsMate); // using ejsMate for layout support
 
 // })
 
-// app.get("/",(req,res)=>{
-//     res.send("root is working");
-// });
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+});
 
 //page not found route (404)
 // app.all("*",(req,res,next)=>{
