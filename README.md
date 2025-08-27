@@ -49,6 +49,10 @@ new destinations.
   ![Leaflet.js](https://img.shields.io/badge/Leaflet.js-199900?logo=leaflet&logoColor=white)  
 
 
+🌐 **Check out the Live App:** [Wanderlust](https://wanderlust-1-rdg7.onrender.com)
+
+
+
 📸 Preview
 
 
