@@ -1,26 +1,26 @@
-🌍 Wanderlust
+## 🌍 Wanderlust
+
 Wanderlust is a full-stack web application where users can explore, create, and review travel listings. 
+
 From cozy mountain cabins to tropical beach resorts, Wanderlust lets you share experiences and discover
+
 new destinations.
 
-✨ Features:
+## ✨ Features:
 
 🏡 Browse Listings – Explore curated places with details, images, and locations
+
 ➕ Create & Manage Listings – Add new destinations with images and descriptions
+
 📝 Reviews & Ratings – Share your experience and read others’ feedback
+
 🖼️ Image Uploads – Upload multiple images per listing
+
 🌍 Interactive Maps – View exact locations using integrated maps
+
 🔒 Authentication – Secure login & registration with sessions/JWT
+
 ⚡ Full CRUD Functionality – Create, Read, Update, Delete for listings and reviews
-
-🚀 Tech Stack
-
-Frontend: EJS, Bootstrap (templating + styling)
-Backend: Node.js, Express.js
-Database: MongoDB with Mongoose
-Authentication & Authorization: Passport.js, Passport-local-mongoose (with sessions)
-Deployment:Render (backend) & MongoDB Atlas (database)
-Others: Cloudinary (image storage), OpenStreetMap (maps) with Leaflet.js
 
 ## 🚀 Tech Stack  
 
@@ -49,6 +49,41 @@ Others: Cloudinary (image storage), OpenStreetMap (maps) with Leaflet.js
   ![Leaflet.js](https://img.shields.io/badge/Leaflet.js-199900?logo=leaflet&logoColor=white)  
 
 
-📸 Screenshots
+📸 Preview
+
+
+<img width="1347" height="612" alt="Wanderlust-1" src="https://github.com/user-attachments/assets/cad83aaa-c3f8-4efd-89cc-cf05804f90b9" />
+
+
+
+
+
+
+
+
+
+
+
+## 🙌 About
+
+
+- This project was built as a practice full-stack app to strengthen my skills in:
+
+- Backend with Node.js + Express
+
+- Database modeling in MongoDB
+
+- Authentication & authorization with Passport.js
+
+- Rendering dynamic views with EJS
+
+- Deployment on Render
+
+🔥 Made with ❤️ while learning Full Stack Development
+
+
+
+
+
 
 
