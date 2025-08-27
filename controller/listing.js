@@ -36,6 +36,9 @@ module.exports.showListing = async(req,res,next)=>{
       params: {
         format: "json",
         q: listing.location
+      },
+      headers: {
+        "User-Agent": "WanderlustApp/1.0 (yadavsky6410@gmail.com)"
       }
     });
 
