@@ -56,6 +56,11 @@ const sessionOptions={
   }
 }
 
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+
+app.engine("ejs", ejsMate); // using ejsMate for layout support
+
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -93,10 +98,7 @@ app.use("/listings/:id/reviews", reviews);
 app.use("/", user);
 
 
-app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"views"));
 
-app.engine("ejs", ejsMate); // using ejsMate for layout support
 
 //demoUser for registration
 // app.get("/demoUser",async(req,res)=>{
