@@ -56,11 +56,6 @@ const sessionOptions={
   }
 }
 
-app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"views"));
-
-app.engine("ejs", ejsMate); // using ejsMate for layout support
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -86,6 +81,11 @@ app.use((req,res,next)=>{
   next();
 })
 
+
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+
+app.engine("ejs", ejsMate); // using ejsMate for layout support
 
 
 //express router for listings
