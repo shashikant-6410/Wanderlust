@@ -81,13 +81,6 @@ app.use((req,res,next)=>{
   next();
 })
 
-
-app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"views"));
-
-app.engine("ejs", ejsMate); // using ejsMate for layout support
-
-
 //express router for listings
 app.use("/listings", listings);
 
@@ -98,6 +91,10 @@ app.use("/listings/:id/reviews", reviews);
 app.use("/", user);
 
 
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+
+app.engine("ejs", ejsMate); // using ejsMate for layout support
 
 
 //demoUser for registration
